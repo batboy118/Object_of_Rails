@@ -1,10 +1,9 @@
-# app/models/blog.rb
 class Blog
 	attr_reader :entries
 	attr_writer :post_source
 
 	def initialize
-		@entries = []
+	  @entries = []
 	end
 
 	def title
@@ -15,14 +14,19 @@ class Blog
 	  "The trusted source for drying paint news & opinion"
 	end
 
-	def new_post
-		post_source.call.tap do |p|
-			p.blog = self
-		end
+	def add_entry entry
+	  entries << entry
+	end
+
+	def new_post *args
+	  post = post_source.call *args
+	  post.blog = self
+	  post
 	end
 
 	private
-    def post_source
-        @post_source ||= Post.public_method(:new)
-    end
+
+	def post_source
+	  @post_source ||= Post.public_method(:new)
+	end
 end
