@@ -8,8 +8,9 @@ class Post
 		attrs.each do |k,v| send("#{k}=",v) end
 	end
 
-    def publish
-        blog.add_entry(self)
+	def publish(clock=DateTime)
+		self.pubdate = clock.now
+		blog.add_entry(self)
 	end
 
 	def persisted?
