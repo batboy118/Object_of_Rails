@@ -15,13 +15,17 @@ class Blog
 	end
 
 	def add_entry entry
-	  entries << entry
+	  @entries << entry
 	end
 
 	def new_post *args
 	  post = post_source.call *args
 	  post.blog = self
 	  post
+	end
+
+	def entries
+		@entries.sort_by{|e| e.pubdate}.reverse.take(10)
 	end
 
 	private

@@ -1,4 +1,11 @@
 require 'rr'
+require 'date'
+require 'ostruct'
+require 'minitest/autorun'
+
+# require 'active_support'
+# require 'active_support/deprecation'
+# require 'activerecord-nulldb-adapter'
 
 class MiniTest::Unit::TestCase
 	include RR::Adapters::MiniTest
