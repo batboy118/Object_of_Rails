@@ -5,7 +5,8 @@ require_relative '../../app/models/blog'
 
 describe Blog do
   before do
-    @it = Blog.new
+    @entries = []
+    @it = Blog.new(->{@entries})
   end
 
   it "has no entries" do
