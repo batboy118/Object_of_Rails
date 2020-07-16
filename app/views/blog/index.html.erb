@@ -1,4 +1,8 @@
+<% if flash[:notice] %>
+	<div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <h1><%= @blog.title %></h1>
 <h2><%= @blog.subtitle %></h2>
 
 <%= render partial: "entry", collection: @blog.entries %>
+

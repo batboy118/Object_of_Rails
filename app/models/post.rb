@@ -2,7 +2,7 @@ require 'date'
 require 'active_model'
 
 class Post
-	attr_accessor :blog, :title, :body, :pubdate
+	attr_accessor :blog, :title, :body, :pubdate, :image_url
 
 	extend ActiveModel::Naming
 	include ActiveModel::Conversion
@@ -21,6 +21,10 @@ class Post
 
 	def persisted?
         false
+	end
+
+	def picture?
+		image_url.present?
 	end
 
 end
